@@ -1,0 +1,14 @@
+link-datastore:
+    image:mysql
+    -/home/ubuntu/linkvolume:/var/lib/mysql
+
+link-my_mysql:
+    image:mysql
+    volumes_from:
+	-link-datastore
+
+link-wordpress:
+    image:wordpress
+    ports:
+	-8888:80
+    expose:8888
