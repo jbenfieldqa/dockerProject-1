@@ -45,12 +45,12 @@ zabbix_agent:
     - "10050:10050"
   tty: true
 
-#urbancode:
-#  build: urbancode/
-#  dockerfile: /home/ubuntu/dockerProject/urbancode/Dockerfile
-#  volumes:
-#    - /home/ubuntu/dockerProject/shared/:/var/lib/urbancode
-#  ports:
-#    - "8087:8087"
-#    - "8443:8443"
-#  mem_limit: 600m
+urbancode:
+  build: urbancode/
+  dockerfile: /home/ubuntu/dockerProject/urbancode/Dockerfile
+  volumes:
+    - /home/ubuntu/dockerProject/shared/:/var/lib/urbancode
+  ports:
+    - "8087:8087"
+    - "8443:8443"
+
