@@ -1,7 +1,6 @@
 FROM ubuntu
 MAINTAINER Dan
 
-COPY setupDatabase.sql /opt
 EXPOSE 3306
 RUN groupadd zabbix
 RUN useradd -g zabbix zabbix
@@ -15,7 +14,7 @@ RUN wget http://repo.zabbix.com/zabbix/3.2/ubuntu/pool/main/z/zabbix/zabbix_3.2.
 RUN echo "mysql-5.7-server mysql-server/root_password password root" | debconf-set-selections
 RUN echo "mysql-5.7-server mysql-server/root_password_again password root" | debconf-set-selections
 RUN apt-get install -y mysql-server-5.7 mysql-client-5.7 libmysqlclient20 libmysqlclient-dev libmysqld-dev
-RUN mv /opt/setupDatabase.sql /opt/zabbix-3.2.1/database/mysql
+COPY setupDatabase.sql /opt/zabbix-3.2.1/database/mysql
 
 WORKDIR /opt/zabbix-3.2.1/database/mysql/
 RUN service mysql start && mysql -u root -proot < setupDatabase.sql\

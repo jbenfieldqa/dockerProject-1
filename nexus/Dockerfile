@@ -1,9 +1,7 @@
 FROM ubuntu
 MAINTAINER Dan
 
-RUN apt-get -y update
-RUN apt-get -y install wget
-RUN apt-get -y install default-jre && apt-get -y install default-jdk
+RUN apt-get -y update && apt-get -y install wget default-jre default-jdk
 WORKDIR /opt
 RUN wget https://sonatype-download.global.ssl.fastly.net/nexus/3/nexus-3.0.2-02-unix.tar.gz
 RUN tar -zxvf /opt/nexus-3.0.2-02-unix.tar.gz

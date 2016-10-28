@@ -5,12 +5,12 @@ RUN groupadd ibm
 RUN useradd -g ibm ibm
 
 WORKDIR /opt
-#COPY URBANCODE_DEPLOY_6.2.2_EN_EVAL.zip setupDatabase.sql install.properties /opt/ 
+RUN apt-get update && apt-get install -y wget 
 RUN wget https://www.dropbox.com/s/5se6yyeagdbmuot/URBANCODE_DEPLOY_6.2.2_EN_EVAL.zip?dl=0
 RUN echo "mysql-5.7-server mysql-server/root_password password root" | debconf-set-selections
 RUN echo "mysql-5.7-server mysql-server/root_password_again password root" | debconf-set-selections
 RUN apt-get -y update && apt-get install -y default-jdk default-jre mysql-server-5.7 libmysql-java unzip sysv-rc-conf sed
-
+COPY setupDatabase.sql install.properties /opt/
 RUN service mysql start && mysql -u root -proot < setupDatabase.sql
 
 ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
