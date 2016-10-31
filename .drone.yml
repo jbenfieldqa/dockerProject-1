@@ -6,5 +6,5 @@
       - go test
   publish:
     docker:
-    repo: danielperryQA/dockerProject
-    file: Dockerfile
+        repo: danielperryQA/dockerProject
+        file: Dockerfile
