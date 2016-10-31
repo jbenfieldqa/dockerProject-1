@@ -6,4 +6,4 @@
       - go test
   publish:
     image: plugins/docker
-    repo: danielperryQA/dockerProject
+    repo: dockerProject
