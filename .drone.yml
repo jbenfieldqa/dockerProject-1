@@ -5,5 +5,6 @@
       - go build
       - go test
   publish:
-    image: plugins/docker
-    repo: dockerProject
+    docker:
+    repo: danielperryQA/dockerProject
+    file: Dockerfile
