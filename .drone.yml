@@ -1,4 +1,9 @@
-build:
-  image: ubuntu
-script:
-  - docker-compose up -d zabbix_server zabbix_agent
+pipeline:
+  build:
+    image: golang
+    commands:
+      - go build
+      - go test
+  publish:
+    image: plugins/docker
+    repo: dockerProject
