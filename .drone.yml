@@ -1,4 +1,4 @@
-pipeline:
+#pipeline:
   build:
     image: golang
     commands:
@@ -6,4 +6,4 @@ pipeline:
       - go test
   publish:
     image: plugins/docker
-    repo: dockerProject
+    repo: danielperryQA/dockerProject
